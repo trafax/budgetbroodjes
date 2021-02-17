@@ -45,7 +45,7 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
         if ((Auth::user()->company->canteen ?? 0) == 1) {
-            $this->redirectTo =  Auth::user()->company->domain;
+            $this->redirectTo =  env('PROTOCOL'). Auth::user()->company->domain;
         } else {
             $this->redirectTo = $this->guard()->user()->role == 'admin' ? route('dashboard') : route('home');
         }

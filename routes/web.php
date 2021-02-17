@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 /**
  * Bedrijfskantine routes
  */
+
 Route::middleware('web')->domain(config()->get('domain'))->group(function(){
 
     Route::get('/', [\App\Http\Controllers\HomeController::class, 'canteen'])->name('canteen');
