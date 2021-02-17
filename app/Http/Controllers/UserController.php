@@ -56,7 +56,7 @@ class UserController extends Controller
         $user->fill($request->all());
         $user->save();
 
-        return redirect()->route('users.index')->with('alert', ['type' => 'success', 'message' => 'Gebruiker succesvol aangepast.']);
+        return redirect()->route('user.index')->with('alert', ['type' => 'success', 'message' => 'Gebruiker succesvol aangepast.']);
     }
 
     public function destroy(User $user)
