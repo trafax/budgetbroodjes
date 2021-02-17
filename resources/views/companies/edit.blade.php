@@ -39,7 +39,45 @@
                             </label>
                         </div>
                     </div>
-                    <div class="mb-3">
+
+
+                    <nav class="mt-4">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#openingshours" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Openingstijden</button>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content bg-white border p-3" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="openingshours" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                            <a href="" class="mb-3 d-block">Voeg een regel toe</a>
+
+                            <div class="row b-row">
+                                <div class="col-auto">
+                                    <select name="day" class="form-select">
+                                        <option value="0">Kies een dag</option>
+                                        <option value="1">Ma</option>
+                                        <option value="2">Di</option>
+                                        <option value="3">Wo</option>
+                                        <option value="4">Do</option>
+                                        <option value="5">Vr</option>
+                                        <option value="6">Za</option>
+                                        <option value="7">Zo</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="00:00" name="time_start" class="form-control">
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="00:00" name="time_end" class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3 mt-4">
                         <input type="submit" name="submit" value="Opslaan" class="btn btn-red">
                     </div>
                 </form>

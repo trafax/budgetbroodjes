@@ -8,18 +8,22 @@
 
     <div class="row">
         <div class="col">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                    Selecteer een categorie
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                    @foreach ($categories as $category)
-                        <li><a class="dropdown-item" href="{{ route('canteen.category', $category->slug) }}">{{ $category->title }}</a></li>
-                    @endforeach
-                </ul>
+            <div class="d-flex justify-content-between">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ $category->title ?? 'Selecteer een categorie' }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                        @foreach ($categories as $obj)
+                            <li><a class="dropdown-item" href="{{ route('canteen.category', $obj->slug) }}">{{ $obj->title }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div>
+                    <h1>{{ $category->title ?? '' }}</h1>
+                </div>
             </div>
-
-            <hr>
+            <hr class="mt-2">
         </div>
     </div>
 </div>

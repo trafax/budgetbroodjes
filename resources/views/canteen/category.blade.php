@@ -5,11 +5,11 @@
     @include('partials.slider')
 
     <div class="container">
-
-        @include('partials.categories')
-
         <div class="row">
             <div class="col">
+
+                @include('partials.categories')
+
                 <div class="row row-cols-1 row-cols-md-2 g-4">
                     @foreach ($category->products as $product)
                         <div class="col">
@@ -44,9 +44,8 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-3">
-                @include('partials.short_cart')
-            </div>
+
+            @include('partials.short_cart')
         </div>
     </div>
 

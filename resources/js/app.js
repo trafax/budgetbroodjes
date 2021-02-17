@@ -26,6 +26,6 @@ $(function(){
         if($(window).scrollTop() > initTopPosition)
             $('.short-cart').css({'position':'fixed','top':'20px','width':originalWidth});
         else
-            $('.short-cart').css({'position':'relative','top':originalTopPosition});
+            $('.short-cart').css({'position':'relative','top': originalTopPosition});
     });
 })

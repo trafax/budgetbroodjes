@@ -5,13 +5,13 @@
     @include('partials.slider')
 
     <div class="container">
-        @include('partials.categories')
-
         <div class="row">
-            <div class="col"></div>
-            <div class="col-3">
-                @include('partials.short_cart')
+            <div class="col">
+                @include('partials.categories')
             </div>
+
+            @include('partials.short_cart')
+
         </div>
     </div>
 
