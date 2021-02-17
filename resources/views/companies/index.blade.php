@@ -30,7 +30,7 @@
                             @foreach ($companies as $company)
                                 <tr>
                                     <td><a href="{{ route('company.edit', $company) }}">{{ $company->title }}</a></td>
-                                    <td>{{ $company->domain }}</td>
+                                    <td><a href="{{ config()->get('app.protocol') . $company->domain }}">{{ $company->domain }}</a></td>
                                     <td class="text-end"><a href="{{ route('company.destroy', $company) }}" onclick="return confirm('Bedrijf verwijderen?')"><i class="bi bi-x"></i></a></td>
                                 </div>
                             @endforeach

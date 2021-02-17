@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Company;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Request $request)
     {
         if (app()->runningInConsole() == false) {
+
+            Artisan::call('storage:link');
 
             /**
              * Kijken of de URL gekoppeld zit aan een kantine
