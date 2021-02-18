@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         if (app()->runningInConsole() == false) {
 
             Artisan::call('storage:link');
+            Artisan::call('migrate');
 
             /**
              * Kijken of de URL gekoppeld zit aan een kantine

@@ -56,6 +56,24 @@ class CompanyController extends Controller
         $company->fill($request->all());
         $company->save();
 
+        /**
+         * Openingstijden opslaan
+         */
+        $company->openingtimes()->detach();
+        foreach ($request->get('openingtimes')['day'] as $key => $value) {
+
+            if (empty($value)) {
+                continue;
+            }
+
+            $day = $request->get('openingtimes')['day'][$key] ?? NULL;
+            $time_open = $request->get('openingtimes')['time_open'][$key] ?? NULL;
+            $time_close = $request->get('openingtimes')['time_close'][$key] ?? NULL;
+
+
+            $company->openingtimes()->attach($company->id, ['day' => $day, 'time_open' => $time_open, 'time_close' => $time_close]);
+        }
+
         return redirect()->route('company.index')->with('alert', ['type' => 'success', 'message' => 'Bedrijf succesvol aangepast.']);
     }
 

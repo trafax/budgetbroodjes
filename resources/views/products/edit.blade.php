@@ -37,7 +37,7 @@
                             <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#offers" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Aanbiedingen</button>
                         </div>
                     </nav>
-                    <div class="tab-content bg-white border p-3" id="nav-tabContent">
+                    <div class="tab-content bg-white border-bottom p-3" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="attributes" role="tabpanel" aria-labelledby="nav-home-tab">
 
                                 @if ($product->foodticket_id != NULL)

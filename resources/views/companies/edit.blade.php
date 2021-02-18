@@ -47,13 +47,19 @@
                         </div>
                     </nav>
 
-                    <div class="tab-content bg-white border p-3" id="nav-tabContent">
+                    <div class="tab-content bg-white border-bottom p-3" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="openingshours" role="tabpanel" aria-labelledby="nav-home-tab">
 
                             <script>
                                 function cloneRow() {
 
-                                    $('.b-row').clone().insertAfter(".b-row").removeClass('b-row').addClass('mt-2');
+                                    $('.b-row').clone().insertAfter(".rows").removeClass('b-row').addClass('mt-2');
+
+                                    return false;
+                                }
+
+                                function removeRow(object) {
+                                    $(object).closest('.row').remove();
 
                                     return false;
                                 }
@@ -61,9 +67,35 @@
 
                             <a href="#" onclick="return cloneRow($(this))" class="mb-3 d-block">Voeg een regel toe</a>
 
+                            @foreach($company->openingtimes()->orderBy('day')->orderBy('time_open')->get() as $openingtime)
+                                <div class="row mb-2">
+                                    <div class="col-auto">
+                                        <select name="openingtimes[day][]" class="form-select">
+                                            <option value="0">Kies een dag</option>
+                                            <option value="1" {{ $openingtime->pivot->day == 1 ? 'selected' : '' }}>Ma</option>
+                                            <option value="2" {{ $openingtime->pivot->day == 2 ? 'selected' : '' }}>Di</option>
+                                            <option value="3" {{ $openingtime->pivot->day == 3 ? 'selected' : '' }}>Wo</option>
+                                            <option value="4" {{ $openingtime->pivot->day == 4 ? 'selected' : '' }}>Do</option>
+                                            <option value="5" {{ $openingtime->pivot->day == 5 ? 'selected' : '' }}>Vr</option>
+                                            <option value="6" {{ $openingtime->pivot->day == 6 ? 'selected' : '' }}>Za</option>
+                                            <option value="0" {{ $openingtime->pivot->day == 0 ? 'selected' : '' }}>Zo</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" placeholder="00:00" name="openingtimes[time_open][]" class="form-control" value="{{ $openingtime->pivot->time_open }}">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" placeholder="00:00" name="openingtimes[time_close][]" class="form-control" value="{{ $openingtime->pivot->time_close }}">
+                                    </div>
+                                    <div class="col-auto text-end">
+                                        <a href="#" onclick="return removeRow($(this))">X</a>
+                                    </div>
+                                </div>
+                            @endforeach
+
                             <div class="row b-row">
                                 <div class="col-auto">
-                                    <select name="day" class="form-select">
+                                    <select name="openingtimes[day][]" class="form-select">
                                         <option value="0">Kies een dag</option>
                                         <option value="1">Ma</option>
                                         <option value="2">Di</option>
@@ -75,14 +107,15 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="00:00" name="time_start" class="form-control">
+                                    <input type="text" placeholder="00:00" name="openingtimes[time_open][]" class="form-control">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="00:00" name="time_end" class="form-control">
+                                    <input type="text" placeholder="00:00" name="openingtimes[time_close][]" class="form-control">
                                 </div>
+                                <div class="col-auto">&nbsp; &nbsp;</div>
                             </div>
 
-
+                            <div class="rows"></div>
 
 
 
