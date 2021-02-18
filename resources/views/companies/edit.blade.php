@@ -50,7 +50,16 @@
                     <div class="tab-content bg-white border p-3" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="openingshours" role="tabpanel" aria-labelledby="nav-home-tab">
 
-                            <a href="" class="mb-3 d-block">Voeg een regel toe</a>
+                            <script>
+                                function cloneRow() {
+
+                                    $('.b-row').clone().insertAfter(".b-row").removeClass('b-row').addClass('mt-2');
+
+                                    return false;
+                                }
+                            </script>
+
+                            <a href="#" onclick="return cloneRow($(this))" class="mb-3 d-block">Voeg een regel toe</a>
 
                             <div class="row b-row">
                                 <div class="col-auto">
@@ -72,6 +81,11 @@
                                     <input type="text" placeholder="00:00" name="time_end" class="form-control">
                                 </div>
                             </div>
+
+
+
+
+
 
                         </div>
                     </div>

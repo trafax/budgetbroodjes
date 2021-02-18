@@ -19,7 +19,7 @@
                         @endforeach
                     </ul>
                 </div>
-                <div>
+                <div class="text-end">
                     <h1>{{ $category->title ?? '' }}</h1>
                 </div>
             </div>
