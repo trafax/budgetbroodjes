@@ -18,4 +18,21 @@ class Company extends Model
     {
         return $this->belongsToMany(Company::class, 'company_openingtime')->withPivot('day', 'time_open', 'time_close');
     }
+
+    public function openingtime()
+    {
+        return $this->belongsToMany(Company::class, 'company_openingtime')->where('day', date('w'))->where('time_open','<=',date('h:i'))->where('time_close','>=',date('h:i'))->withPivot('day', 'time_open', 'time_close')->first();
+    }
+
+    public function nextopeningtime()
+    {
+        return $this->belongsToMany(Company::class, 'company_openingtime')->where('day', date('w'))->where('time_open','>=',date('h:i'))->withPivot('day', 'time_open', 'time_close')->first();
+    }
+
+    public function isOpen()
+    {
+        $is_open = $this->belongsToMany(Company::class, 'company_openingtime')->where('day', date('w'))->where('time_open','<=',date('h:i'))->where('time_close','>=',date('h:i'))->withPivot('day', 'time_open', 'time_close')->first();
+
+        return $is_open ? true : false;
+    }
 }

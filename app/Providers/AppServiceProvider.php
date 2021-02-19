@@ -35,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
             /**
              * Kijken of de URL gekoppeld zit aan een kantine
              */
+            view()->share('active_company', new Company());
+
             if ($company = Company::where('domain', $request->getHost())->first()) {
                 Config::set('domain', $company->domain);
                 view()->share('active_company', $company);
