@@ -18,4 +18,9 @@ class CanteenController extends Controller
 
         return view('canteen.category')->with('category', $category);
     }
+
+    public function dashboard()
+    {
+        return view('canteen.dashboard');
+    }
 }

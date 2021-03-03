@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $users = User::where('role', 'user')->orderBy('name', 'ASC');
+        $users = User::where('id', '>', '1')->orderBy('name', 'ASC');
         if ($request->get('search')) {
             $users->where('name', 'LIKE', '%'. $request->get('search') .'%');
         }

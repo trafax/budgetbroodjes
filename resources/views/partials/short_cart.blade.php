@@ -11,7 +11,18 @@
                 @if ($active_company->isOpen() == true)
                     <h4>Je bestelling</h4>
                     <hr>
-                    <div class="row">
+                    @foreach (\Cart::content() as $item)
+                        <div class="row">
+                            <div class="col">
+                                {{ $item->name }}
+                            </div>
+                            <div class="col-auto text-end">
+                                {{ $item->qty }}x<br>
+                                € {{ number_format($item->price, 2, ',', '.') }}
+                            </div>
+                        </div>
+                    @endforeach
+                    {{-- <div class="row">
                         <div class="col">
                             Grillburger (kip) met saus op een sesam bol
                         </div>
@@ -36,7 +47,7 @@
                             <span>Totaal</span>
                             <span>€ 4,50</span>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="row">
                         <a href="" class="btn btn-warning mt-3">Afrekenen</a>

@@ -37,8 +37,10 @@ class AppServiceProvider extends ServiceProvider
              */
             view()->share('active_company', new Company());
 
+            Config::set('company_id', NULL);
             if ($company = Company::where('domain', $request->getHost())->first()) {
                 Config::set('domain', $company->domain);
+                Config::set('company_id', $company->id);
                 view()->share('active_company', $company);
             }
         }

@@ -9,6 +9,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
+                @if(Auth::user() && Auth::user()->role == 'user')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('canteen') }}">Bestellen</a>
+                    </li>
+                @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         @if (Auth::user())
@@ -21,6 +26,9 @@
                         @if (Auth::user())
                             @if(Auth::user()->isAdmin())
                                 <li><a class="dropdown-item" href="{{ route('dashboard') }}"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a></li>
+                            @endif
+                            @if(Auth::user()->role == 'owner')
+                                <li><a class="dropdown-item" href="{{ route('canteen.dashboard') }}"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a></li>
                             @endif
                             <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-person-fill me-1"></i> Uitloggen</a></li>
                         @else

@@ -30,7 +30,7 @@
                                                 @endforeach
                                             </div>
 
-                                            <a href="" class="btn btn-red btn-sm mt-2">€ {{ number_format($product->price, 2, ',', '.') }} <i class="bi bi-plus"></i></a>
+                                            <a href="#" onclick="return addToCart('{{ $product->id }}')" class="btn btn-red btn-sm mt-2">€ {{ number_format($product->price, 2, ',', '.') }} <i class="bi bi-plus"></i></a>
                                         </div>
                                         <div class="col-4">
                                             @if ($product->image)

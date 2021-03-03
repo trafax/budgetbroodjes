@@ -41,6 +41,14 @@
                         <input type="password" name="password" value="" class="form-control" required autocomplete="off">
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Rol</label>
+                        <select name="role" class="form-select">
+                            <option value="user">Medewerker</option>
+                            <option value="owner">Kantine beheerder</option>
+                            <option value="admin">Website beheerder</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <input type="submit" name="submit" value="Opslaan" class="btn btn-red">
                     </div>
                 </form>

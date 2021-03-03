@@ -30,7 +30,8 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td><a href="{{ route('user.edit', $user) }}">{{ $user->name }}</a></td>
-                                    <td>{{ $user->company->title ?? NULL }}</td>
+                                    <td>{{ $user->company->title ?? '-' }}</td>
+                                    <td>{{ $user->role }}</td>
                                     <td class="text-end"><a href="{{ route('user.destroy', $user) }}" onclick="return confirm('Gebruiker verwijderen?')"><i class="bi bi-x"></i></a></td>
                                 </div>
                             @endforeach

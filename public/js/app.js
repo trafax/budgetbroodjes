@@ -4897,6 +4897,29 @@ __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
 
 var Masonry = __webpack_require__(/*! masonry-layout */ "./node_modules/masonry-layout/masonry.js");
 
+window.addToCart = function (id) {
+  $.ajax({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    type: 'post',
+    url: '/cart/' + id + '/add',
+    data: {},
+    dataType: 'json',
+    success: function success(response) {
+      if (response.modal) {
+        $('.modal').modal('hide');
+        $('body').append(response.html);
+        $('.modal').modal('show');
+        $('.modal').on('hidden.bs.modal', function (e) {
+          $('.modal').remove();
+        });
+      } else {}
+    }
+  });
+  return false;
+};
+
 $(function () {
   $('.search-select').select2();
 

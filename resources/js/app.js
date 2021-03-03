@@ -10,6 +10,33 @@ require('select2');
 
 var Masonry = require('masonry-layout');
 
+window.addToCart = function(id) {
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        type: 'post',
+        url: '/cart/'+id+'/add',
+        data: {},
+        dataType: 'json',
+        success: function (response) {
+
+            if (response.modal) {
+                $('.modal').modal('hide');
+                $('body').append(response.html);
+                $('.modal').modal('show');
+                $('.modal').on('hidden.bs.modal', function (e) {
+                    $('.modal').remove();
+                });
+            } else {
+
+            }
+        }
+    });
+
+    return false;
+}
 
 $(function(){
     $('.search-select').select2();
